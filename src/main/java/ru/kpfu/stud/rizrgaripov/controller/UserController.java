@@ -22,6 +22,7 @@ public class UserController {
     public String signUp(@ModelAttribute(name = "user") CreateUserDto userDto, HttpServletRequest request) {
         String url = request.getRequestURL().toString().replace(request.getServletPath(), "");
         userService.signUp(userDto, url);
+        request.getSession().setAttribute("login", userDto.getLogin());
         return "sign_up_success";
     }
 }

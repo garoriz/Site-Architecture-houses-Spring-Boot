@@ -2,6 +2,7 @@ package ru.kpfu.stud.rizrgaripov.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,6 +34,18 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
+    private List<Article> articles;
+
+    @OneToMany(mappedBy = "message", fetch = FetchType.EAGER)
+    private List<Message> messages;
+
+    @OneToMany(mappedBy = "photo", fetch = FetchType.EAGER)
+    private List<Photo> photos;
+
+    @OneToMany(mappedBy = "sale_ad", fetch = FetchType.EAGER)
+    private List<SaleAd> saleAds;
 
     public User() {}
 
@@ -98,6 +111,38 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
+    public List<SaleAd> getSaleAds() {
+        return saleAds;
+    }
+
+    public void setSaleAds(List<SaleAd> saleAds) {
+        this.saleAds = saleAds;
     }
 
     public User(String name, String surname, String status, String urlPhoto, String login, String password) {

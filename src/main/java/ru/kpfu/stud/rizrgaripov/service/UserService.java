@@ -7,4 +7,6 @@ public interface UserService {
     UserDto get(String login);
 
     UserDto signUp(CreateUserDto createUserDto, String url);
+
+    UserDto get(int id);
 }

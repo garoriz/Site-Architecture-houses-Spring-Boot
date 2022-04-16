@@ -15,7 +15,7 @@ import ru.kpfu.stud.rizrgaripov.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final String URL_PHOTO = "<img src=https://res.cloudinary.com/dfn48aqa5/image/upload/v1634988875/" +
+    private final String URL_PHOTO = "<img src=https://res.cloudinary.com/dfn48aqa5/image/upload/v1634988875/" +
             "fb_avatar_ipvpno.jpg width=\"100\" height=\"111\">";
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder encoder;
@@ -41,7 +41,12 @@ public class UserServiceImpl implements UserService {
                 URL_PHOTO,
                 createUserDto.getLogin(),
                 createUserDto.getPassword());
-        User savedUser = userRepository.save(user);
+        userRepository.save(user);
         return UserDto.fromModel(user);
+    }
+
+    @Override
+    public UserDto get(int id) {
+        return userRepository.getUserById(id).map(UserDto::fromModel).orElse(null);
     }
 }
