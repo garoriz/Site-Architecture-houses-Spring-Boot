@@ -9,6 +9,8 @@ import java.util.List;
 public interface ArticleService {
     List<ArticleDto> getAll();
 
+    List<ArticleDto> getAllByUserId(int id);
+
     ArticleDto get(int id);
 
     void save(CreateArticleDto createArticleDto);

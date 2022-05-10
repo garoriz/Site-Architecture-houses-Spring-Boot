@@ -4,7 +4,7 @@ import ru.kpfu.stud.rizrgaripov.model.User;
 
 public class CreatePhotoDto {
     private String urlPhoto;
-    private User user;
+    private int userId;
 
     public CreatePhotoDto() {
     }
@@ -17,16 +17,16 @@ public class CreatePhotoDto {
         this.urlPhoto = urlPhoto;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public CreatePhotoDto(String urlPhoto, User user) {
+    public CreatePhotoDto(String urlPhoto, int userId) {
         this.urlPhoto = urlPhoto;
-        this.user = user;
+        this.userId = userId;
     }
 }

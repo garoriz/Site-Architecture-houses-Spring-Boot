@@ -1,5 +1,7 @@
 package ru.kpfu.stud.rizrgaripov.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -9,11 +11,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import ru.kpfu.stud.rizrgaripov.security.CustomUserDetailsService;
+
+import java.util.logging.Level;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private static final Logger logger
+            = LoggerFactory.getLogger(SecurityConfig.class);
+
     @Bean
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService();
@@ -38,20 +46,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests()
-                .antMatchers("/home")
-                .authenticated()
-                .anyRequest().permitAll()
-                .and()
-                .formLogin()
-                .usernameParameter("login")
-                .defaultSuccessUrl("/home")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .permitAll()
-                .and().exceptionHandling().accessDeniedPage("/403");
+    protected void configure(HttpSecurity httpSecurity) {
+        try {
+            httpSecurity.authorizeRequests()
+                    .antMatchers("/profile", "/addArticle", "/myArticles", "/addPhoto", "/addSaleAd", "/settings",
+                            "/uploadPhotoProfile", "/myPhotos", "/mySaleAds", "/deleteSaleAd", "/chat", "/updateSaleAd")
+                    .authenticated()
+                    .anyRequest().permitAll()
+                    .and()
+                    .formLogin()
+                    .loginPage("/signIn")
+                    .usernameParameter("login")
+                    .defaultSuccessUrl("/profile")
+                    .permitAll()
+                    .and()
+                    .logout().
+                    logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/")
+                    .permitAll();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
     }
 }

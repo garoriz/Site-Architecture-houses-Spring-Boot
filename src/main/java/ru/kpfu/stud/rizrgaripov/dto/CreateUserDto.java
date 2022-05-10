@@ -15,6 +15,8 @@ public class CreateUserDto {
     @NotBlank(message = "Пароль не должен быть пустым!")
     private String password;
 
+    private String confirmedPassword;
+
     public CreateUserDto() {
     }
 
@@ -50,10 +52,19 @@ public class CreateUserDto {
         this.password = password;
     }
 
-    public CreateUserDto(String name, String surname, String login, String password) {
+    public String getConfirmedPassword() {
+        return confirmedPassword;
+    }
+
+    public void setConfirmedPassword(String confirmedPassword) {
+        this.confirmedPassword = confirmedPassword;
+    }
+
+    public CreateUserDto(String name, String surname, String login, String password, String confirmedPassword) {
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
+        this.confirmedPassword = confirmedPassword;
     }
 }

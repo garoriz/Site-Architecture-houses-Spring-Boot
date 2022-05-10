@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройки</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3>Настройки профиля</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <form method="post" th:action="@{settings}" th:object="${user}">
+            Сменить имя: <input name="name" type="text" th:field="*{name}"/>
+            <br>
+            Сменить фамилию: <input name="surname" type="text" th:field="*{surname}"/>
+            <br>
+            Сменить статус: <input name="status" type="text" th:field="*{status}"/>
+            <br>
+            Сменить пароль: <input name="password" type="password" th:field="*{password}"/>
+            <br>
+            Подтвердить пароль: <input name="confirmedPassword" type="password" th:field="*{confirmedPassword}"/>
+            <br>
+            <input type="submit" value="Сохранить">
+            <br>
+        </form>
+        <form action="/uploadPhotoProfile">
+            <button>Сменить фото</button>
+        </form>
+        <form action="/profile">
+            <button>Назад</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

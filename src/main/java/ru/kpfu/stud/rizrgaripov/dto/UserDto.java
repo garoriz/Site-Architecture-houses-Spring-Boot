@@ -15,6 +15,8 @@ public class UserDto {
 
     private String login;
 
+    private String password;
+
     public Integer getId() {
         return id;
     }
@@ -63,13 +65,25 @@ public class UserDto {
         this.login = login;
     }
 
-    public UserDto(Integer id, String name, String surname, String status, String urlPhoto, String login) {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserDto() {
+    }
+
+    public UserDto(Integer id, String name, String surname, String status, String urlPhoto, String login, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.status = status;
         this.urlPhoto = urlPhoto;
         this.login = login;
+        this.password = password;
     }
 
     public static UserDto fromModel(User user) {
@@ -79,7 +93,8 @@ public class UserDto {
                 user.getSurname(),
                 user.getStatus(),
                 user.getUrlPhoto(),
-                user.getLogin()
+                user.getLogin(),
+                user.getPassword()
         );
     }
 }

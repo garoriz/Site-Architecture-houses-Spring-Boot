@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование объявления</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3>Редактирование объявления</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <form method="post" enctype="multipart/form-data" th:action="@{updateSaleAd(id=${saleAd.id})}" th:object="${changeSaleAd}">
+            Заголовок:
+            <p><textarea rows="2" cols="160" name="heading" th:field="*{heading}" th:text="${saleAd.heading}">
+
+            </textarea></p>
+            <br>
+            Текст:
+            <p><textarea rows="50" cols="160" name="content" th:field="*{content}" th:text="${saleAd.content}">
+
+            </textarea></p>
+            <br>
+            Цена:
+            <input name="price" type="number" th:field="*{price}" th:value="${saleAd.price}">
+            <br>
+            Номер телефона:
+            <input name="phoneNumber" type="text" th:field="*{phoneNumber}" th:value="${saleAd.phoneNumber}">
+            <br>
+            <input type="file" name="file">
+            <br>
+            <input type="submit" value="Изменить объявление">
+        </form>
+    </div>
+</div>
+</body>
+</html>

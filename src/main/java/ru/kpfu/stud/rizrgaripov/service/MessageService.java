@@ -8,7 +8,7 @@ import ru.kpfu.stud.rizrgaripov.model.User;
 import java.util.List;
 
 public interface MessageService {
-    List<MessageDto> getAll(User user, User recipient);
+    List<MessageDto> getAll(int userId, int recipientId);
 
     void save(CreateMessageDto createMessageDto);
 }

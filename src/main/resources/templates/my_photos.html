@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои фото</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3>Мои фото домов и архитектуры</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <td>
+            <span th:if="${photos.size == 0}">
+                Фото нет
+            </span>
+            <span th:unless="${photos.size == 0}">
+                <tr th:each="photo: ${photos}">
+                    <p th:utext="${photo.urlPhoto}"></p>
+                </tr>
+            </span>
+        </td>
+    </div>
+</div>
+</body>
+</html>

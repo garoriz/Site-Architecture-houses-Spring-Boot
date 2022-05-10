@@ -2,24 +2,22 @@ package ru.kpfu.stud.rizrgaripov.dto;
 
 import ru.kpfu.stud.rizrgaripov.model.User;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 public class CreateArticleDto {
     @NotBlank(message = "Заголовок не должен быть пустым!")
     private String heading;
     @NotBlank(message = "Текст статьи не должен быть пустым!")
     private String content;
-    private User user;
+    private int userId;
 
     public CreateArticleDto() {
     }
 
-    public CreateArticleDto(String heading, String content, User user) {
+    public CreateArticleDto(String heading, String content, int userId) {
         this.heading = heading;
         this.content = content;
-        this.user = user;
+        this.userId = userId;
     }
 
     public String getHeading() {
@@ -38,11 +36,11 @@ public class CreateArticleDto {
         this.content = content;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

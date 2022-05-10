@@ -3,9 +3,6 @@ package ru.kpfu.stud.rizrgaripov.dto;
 import ru.kpfu.stud.rizrgaripov.model.SaleAd;
 import ru.kpfu.stud.rizrgaripov.model.User;
 
-import javax.persistence.Column;
-import javax.validation.constraints.Size;
-
 public class SaleAdDto {
     private int id;
     private String heading;
@@ -13,7 +10,7 @@ public class SaleAdDto {
     private int price;
     private String phoneNumber;
     private String urlPhoto;
-    private User user;
+    private int userId;
 
     public int getId() {
         return id;
@@ -63,30 +60,22 @@ public class SaleAdDto {
         this.urlPhoto = urlPhoto;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public SaleAdDto(
-            int id,
-            String heading,
-            String content,
-            int price,
-            String phoneNumber,
-            String urlPhoto,
-            User user
-    ) {
+    public SaleAdDto(int id, String heading, String content, int price, String phoneNumber, String urlPhoto, int userId) {
         this.id = id;
         this.heading = heading;
         this.content = content;
         this.price = price;
         this.phoneNumber = phoneNumber;
         this.urlPhoto = urlPhoto;
-        this.user = user;
+        this.userId = userId;
     }
 
     public static SaleAdDto fromModel(SaleAd saleAd) {
@@ -97,7 +86,7 @@ public class SaleAdDto {
                 saleAd.getPrice(),
                 saleAd.getPhoneNumber(),
                 saleAd.getUrlPhoto(),
-                saleAd.getUser()
+                saleAd.getUserId()
         );
     }
 }

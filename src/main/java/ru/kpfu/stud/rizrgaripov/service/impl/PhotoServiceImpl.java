@@ -30,9 +30,14 @@ public class PhotoServiceImpl implements PhotoService {
     @Override
     public void save(CreatePhotoDto createPhotoDto) {
         Photo photo = new Photo(
-                createPhotoDto.getUrlPhoto(),
-                createPhotoDto.getUser()
+                createPhotoDto.getUserId(),
+                createPhotoDto.getUrlPhoto()
         );
         photoRepository.save(photo);
+    }
+
+    @Override
+    public List<PhotoDto> getAllByUserId(int id) {
+        return photoRepository.findAllByUserId(id).stream().map(PhotoDto::fromModel).collect(Collectors.toList());
     }
 }

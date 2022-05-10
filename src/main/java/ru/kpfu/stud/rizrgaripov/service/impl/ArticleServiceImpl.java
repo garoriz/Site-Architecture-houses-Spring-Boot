@@ -1,13 +1,11 @@
 package ru.kpfu.stud.rizrgaripov.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kpfu.stud.rizrgaripov.dto.ArticleDto;
 import ru.kpfu.stud.rizrgaripov.dto.CreateArticleDto;
 import ru.kpfu.stud.rizrgaripov.model.Article;
 import ru.kpfu.stud.rizrgaripov.repository.ArticleRepository;
-import ru.kpfu.stud.rizrgaripov.repository.UserRepository;
 import ru.kpfu.stud.rizrgaripov.service.ArticleService;
 
 import java.util.List;
@@ -28,6 +26,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<ArticleDto> getAllByUserId(int id) {
+        return articleRepository.findAllByUserId(id).stream().map(ArticleDto::fromModel).collect(Collectors.toList());
+    }
+
+    @Override
     public ArticleDto get(int id) {
         return articleRepository.findById(id).map(ArticleDto::fromModel).orElse(null);
     }
@@ -35,9 +38,9 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void save(CreateArticleDto createArticleDto) {
         Article article = new Article(
+                createArticleDto.getUserId(),
                 createArticleDto.getHeading(),
-                createArticleDto.getContent(),
-                createArticleDto.getUser()
+                createArticleDto.getContent()
         );
         articleRepository.save(article);
     }

@@ -3,17 +3,11 @@ package ru.kpfu.stud.rizrgaripov.dto;
 import ru.kpfu.stud.rizrgaripov.model.Message;
 import ru.kpfu.stud.rizrgaripov.model.User;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.Size;
-
 public class MessageDto {
     private int id;
     private String content;
-    private User user;
-    private User recipient;
+    private int userId;
+    private int recipientId;
 
     public int getId() {
         return id;
@@ -31,35 +25,35 @@ public class MessageDto {
         this.content = content;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public User getRecipient() {
-        return recipient;
+    public int getRecipientId() {
+        return recipientId;
     }
 
-    public void setRecipient(User recipient) {
-        this.recipient = recipient;
+    public void setRecipientId(int recipientId) {
+        this.recipientId = recipientId;
     }
 
-    public MessageDto(int id, String content, User user, User recipient) {
+    public MessageDto(int id, String content, int userId, int recipientId) {
         this.id = id;
         this.content = content;
-        this.user = user;
-        this.recipient = recipient;
+        this.userId = userId;
+        this.recipientId = recipientId;
     }
 
     public static MessageDto fromModel(Message message) {
         return new MessageDto(
                 message.getId(),
                 message.getContent(),
-                message.getUser(),
-                message.getRecipient()
+                message.getUserId(),
+                message.getRecipientId()
         );
     }
 }

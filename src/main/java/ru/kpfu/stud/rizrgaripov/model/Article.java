@@ -8,6 +8,7 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private int userId;
     @Size(min = 1, message = "Заголовок статьи не может быть пустым")
     @Column(nullable = false)
     private String heading;
@@ -15,17 +16,13 @@ public class Article {
     @Column(nullable = false)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
     public Article() {
     }
 
-    public Article(String heading, String content, User user) {
+    public Article(int userId, String heading, String content) {
+        this.userId = userId;
         this.heading = heading;
         this.content = content;
-        this.user = user;
     }
 
     public int getId() {
@@ -52,11 +49,11 @@ public class Article {
         this.content = content;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

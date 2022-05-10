@@ -7,8 +7,8 @@ import javax.validation.constraints.NotBlank;
 public class CreateMessageDto {
     @NotBlank(message = "Сообщение не должно быть пустым!")
     private String content;
-    private User user;
-    private User recipient;
+    private int userId;
+    private int recipientId;
 
     public CreateMessageDto() {
     }
@@ -21,25 +21,25 @@ public class CreateMessageDto {
         this.content = content;
     }
 
-    public CreateMessageDto(String content, User user, User recipient) {
+    public CreateMessageDto(String content, int userId, int recipientId) {
         this.content = content;
-        this.user = user;
-        this.recipient = recipient;
+        this.userId = userId;
+        this.recipientId = recipientId;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public User getRecipient() {
-        return recipient;
+    public int getRecipientId() {
+        return recipientId;
     }
 
-    public void setRecipient(User recipient) {
-        this.recipient = recipient;
+    public void setRecipientId(int recipientId) {
+        this.recipientId = recipientId;
     }
 }

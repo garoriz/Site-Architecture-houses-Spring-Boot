@@ -8,33 +8,30 @@ public class SaleAd {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private int userId;
     @Size(min = 1, message = "Заголовок объявления не может быть пустым")
     @Column(nullable = false)
     private String heading;
     @Size(min = 1, message = "Текст объявления не может быть пустым")
     @Column(nullable = false)
     private String content;
-    @Size(min = 1, message = "Значение цены не может быть пустым")
     @Column(nullable = false)
     private int price;
     @Size(min = 1, message = "Поле номера телефона не может быть пустым")
     @Column(nullable = false)
     private String phoneNumber;
     private String urlPhoto;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public SaleAd() {
     }
 
-    public SaleAd(String heading, String content, int price, String phoneNumber, String urlPhoto, User user) {
+    public SaleAd(int userId, String heading, String content, int price, String phoneNumber, String urlPhoto) {
+        this.userId = userId;
         this.heading = heading;
         this.content = content;
         this.price = price;
         this.phoneNumber = phoneNumber;
         this.urlPhoto = urlPhoto;
-        this.user = user;
     }
 
     public int getId() {
@@ -85,11 +82,11 @@ public class SaleAd {
         this.urlPhoto = urlPhoto;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

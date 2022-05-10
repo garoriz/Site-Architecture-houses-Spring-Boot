@@ -7,5 +7,5 @@ import ru.kpfu.stud.rizrgaripov.model.User;
 import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Integer> {
-    List<Message> findAllByUserAndRecipient(User user, User recipient);
+    List<Message> findAllByUserIdAndRecipientId(int userId, int recipientId);
 }

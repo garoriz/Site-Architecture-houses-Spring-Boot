@@ -3,14 +3,11 @@ package ru.kpfu.stud.rizrgaripov.dto;
 import ru.kpfu.stud.rizrgaripov.model.Article;
 import ru.kpfu.stud.rizrgaripov.model.User;
 
-import javax.persistence.Column;
-import javax.validation.constraints.Size;
-
 public class ArticleDto {
     private int id;
     private String heading;
     private String content;
-    private User user;
+    private int userId;
 
     public int getId() {
         return id;
@@ -32,23 +29,23 @@ public class ArticleDto {
         return content;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public ArticleDto(int id, String heading, String content, User user) {
+    public ArticleDto(int id, String heading, String content, int userId) {
         this.id = id;
         this.heading = heading;
         this.content = content;
-        this.user = user;
+        this.userId = userId;
     }
 
     public static ArticleDto fromModel(Article article) {
@@ -56,7 +53,7 @@ public class ArticleDto {
                 article.getId(),
                 article.getHeading(),
                 article.getContent(),
-                article.getUser()
+                article.getUserId()
         );
     }
 }

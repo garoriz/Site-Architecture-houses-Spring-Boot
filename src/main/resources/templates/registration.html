@@ -100,13 +100,13 @@
     <input name="password" type="password" th:field="*{password}">
     <br>
     Подтверждение пароля:
-    <input name="confirmedPassword" type="password">
+    <input name="confirmedPassword" type="password" th:field="*{confirmedPassword}">
     <br>
     <input type="submit" value="Регистрация">
     <br>
 </form>
 <br>
-<form action="/login">
+<form action="/signIn">
     <button>Войти</button>
 </form>
 </body>

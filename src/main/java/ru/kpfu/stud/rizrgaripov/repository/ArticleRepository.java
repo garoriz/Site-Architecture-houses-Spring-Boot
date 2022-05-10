@@ -11,4 +11,6 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
     Optional<Article> getArticleById(int id);
 
     List<Article> findAll();
+
+    List<Article> findAllByUserId(int id);
 }

@@ -7,18 +7,15 @@ public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(nullable = false)
+    private int userId;
     private String urlPhoto;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public Photo() {
     }
 
-    public Photo(String urlPhoto, User user) {
+    public Photo(int userId, String urlPhoto) {
+        this.userId = userId;
         this.urlPhoto = urlPhoto;
-        this.user = user;
     }
 
     public int getId() {
@@ -37,11 +34,11 @@ public class Photo {
         this.urlPhoto = urlPhoto;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Объявления</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3>Объявления</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <td>
+            <span th:if="${saleAds.size == 0}">
+                Объявлений  нет
+            </span>
+            <span th:unless="${saleAds.size == 0}">
+                <tr th:each="saleAd: ${saleAds}">
+                    <p><a th:text="${saleAd.heading}" th:href="@{/saleAd(id=${saleAd.id})}">heading</a></p>
+                    <small><a th:href="@{/deleteSaleAd(id=${saleAd.id})}">Закрыть объявление</a></small>
+                    <small><a th:href="@{/updateSaleAd(id=${saleAd.id})}">Изменить объявление</a></small>
+                    <br>
+                </tr>
+            </span>
+        </td>
+    </div>
+</div>
+</body>
+</html>

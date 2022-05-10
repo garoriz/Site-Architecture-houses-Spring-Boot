@@ -8,25 +8,19 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int userId;
+    private int recipientId;
     @Size(min = 1, message = "Сообщение не может быть пустым")
     @Column(nullable = false)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "recipient_id")
-    private User recipient;
-
     public Message() {
     }
 
-    public Message(String content, User user, User recipient) {
+    public Message(int userId, int recipientId, String content) {
+        this.userId = userId;
+        this.recipientId = recipientId;
         this.content = content;
-        this.user = user;
-        this.recipient = recipient;
     }
 
     public int getId() {
@@ -45,19 +39,19 @@ public class Message {
         this.content = content;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public User getRecipient() {
-        return recipient;
+    public int getRecipientId() {
+        return recipientId;
     }
 
-    public void setRecipient(User recipient) {
-        this.recipient = recipient;
+    public void setRecipientId(int recipientId) {
+        this.recipientId = recipientId;
     }
 }

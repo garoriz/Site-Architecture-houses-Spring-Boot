@@ -3,12 +3,10 @@ package ru.kpfu.stud.rizrgaripov.dto;
 import ru.kpfu.stud.rizrgaripov.model.Photo;
 import ru.kpfu.stud.rizrgaripov.model.User;
 
-import javax.persistence.Column;
-
 public class PhotoDto {
     private int id;
     private String urlPhoto;
-    private User user;
+    private int userId;
 
     public int getId() {
         return id;
@@ -26,25 +24,25 @@ public class PhotoDto {
         this.urlPhoto = urlPhoto;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public PhotoDto(int id, String urlPhoto, User user) {
+    public PhotoDto(int id, String urlPhoto, int userId) {
         this.id = id;
         this.urlPhoto = urlPhoto;
-        this.user = user;
+        this.userId = userId;
     }
 
     public static PhotoDto fromModel(Photo photo) {
         return new PhotoDto(
                 photo.getId(),
                 photo.getUrlPhoto(),
-                photo.getUser()
+                photo.getUserId()
         );
     }
 }

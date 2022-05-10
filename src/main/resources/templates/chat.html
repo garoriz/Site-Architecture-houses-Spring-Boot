@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Сообщения</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script type="text/javascript" src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script type="text/javascript" src="/messaging.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        div {
+            padding: 20px;
+            border: 8px #17baef;
+            background: lightblue;
+        }
+
+        .content-box {
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <H3>Чат</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <div class="container" id="main-content">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="text" id="message" placeholder="Напишите своё сообщение..." class="form-control">
+                    </div>
+
+                    <button id="send" class="btn btn-default" type="submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table id="conversation" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Сообщения</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="messages">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>

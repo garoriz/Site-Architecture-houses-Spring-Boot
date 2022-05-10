@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Генерация оттенков для цветов</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        #navigation ul
+        {
+            margin: 0;
+            padding: 0;
+        }
+        #navigation ul li
+        {
+            list-style-type: none;
+            display: inline;
+        }
+        #navigation li:not(:first-child):before {
+            content: " | ";
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <H3>Генерация оттенков для цветов</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <div id="navigation">
+            <ul>
+                <li><a href="/getShade?color=red">Красный</a></li>
+                <li><a href="/getShade?color=pink">Розовый</a></li>
+                <li><a href="/getShade?color=purple">Фиолетовый</a></li>
+                <li><a href="/getShade?color=navy">Цвет Navy</a></li>
+                <li><a href="/getShade?color=blue">Синий</a></li>
+                <li><a href="/getShade?color=aqua">Цвет морской волны</a></li>
+                <li><a href="/getShade?color=green">Зелёный</a></li>
+                <li><a href="/getShade?color=lime">Цвет лайма</a></li>
+                <li><a href="/getShade?color=yellow">Жёлтый</a></li>
+                <li><a href="/getShade?color=orange">Оранжевый</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

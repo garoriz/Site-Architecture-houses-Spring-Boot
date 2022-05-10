@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Статья</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+  <H3><td th:text="${article.heading}">heading</td></H3>
+</div>
+
+<div class="content1">
+  <div class="content">
+    <a href="/">Главная страница</a>
+    <br>
+    <a href="/articles">Назад</a>
+    <br>
+    <a th:text="${user.name}" th:href="@{/profile(login=${user.login})}">user</a>
+    <br>
+    <td th:text="${article.content}">content</td>
+  </div>
+</div>
+</body>
+</html>

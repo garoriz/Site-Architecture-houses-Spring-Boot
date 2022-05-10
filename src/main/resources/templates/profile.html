@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3><td th:text="${user.name}">name</td> <td th:text="${user.surname}">surname</td></H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <a>Login: </a>
+        <a><td th:text="${user.login}">login</td></a>
+        <br>
+        <p th:utext="${user.urlPhoto}"></p>
+        <p th:text="${user.status}">status</p>
+        <br>
+        <form action="/settings">
+            <button>Настройки профиля</button>
+        </form>
+        <form action="/logout">
+            <button>Выход</button>
+        </form>
+        <form action="/addArticle">
+            <button>Добавить статью</button>
+        </form>
+        <form action="/addPhoto">
+            <button>Добавить фото</button>
+        </form>
+        <form action="/addSaleAd">
+            <button>Добавить объявление</button>
+        </form>
+        <form action="/myArticles">
+            <button>Мои статьи</button>
+        </form>
+        <form action="/myPhotos">
+            <button>Мои фото</button>
+        </form>
+        <form action="/mySaleAds">
+            <button>Мои объявления</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

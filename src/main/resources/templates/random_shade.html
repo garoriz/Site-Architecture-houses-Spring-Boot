@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Генерация оттенков для цветов</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3>Генерация оттенков для цветов</td></H3>
+</div>
+
+<div class="content1">
+    <div th:style="${color.backgroundColor}" class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <a href="/choosingColors">Назад</a>
+        <br>
+        <a th:text="${color.hex}">hex</a>
+        <br>
+        <a th:text="${color.rgb}">rgb</a>
+        <br>
+        <a th:text="${color.hsl}">hsl</a>
+    </div>
+</div>
+</body>
+</html>

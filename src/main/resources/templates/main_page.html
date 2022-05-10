@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Архитектура & дома</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        #navigation ul
+        {
+            margin: 0;
+            padding: 0;
+        }
+        #navigation ul li
+        {
+            list-style-type: none;
+            display: inline;
+        }
+        #navigation li:not(:first-child):before {
+            content: " | ";
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <H3>Архитектура & дома</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <div id="navigation">
+            <ul>
+                <li><a href="/profile">Мой профиль</a></li>
+                <li><a href="/articles">Статьи</a></li>
+                <li><a href="/photos">Фото пользователей</a></li>
+                <li><a href="/saleAds">Объявления о продаже домов</a></li>
+                <li><a href="/chat">Общий чат</a></li>
+                <li><a href="/choosingColors">Генерация оттенков для цветов</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

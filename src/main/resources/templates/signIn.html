@@ -1,6 +1,8 @@
-<html lang="en">
-<head><@head></@head>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
     <style>
         #header {
             border:1px solid;
@@ -79,24 +81,23 @@
             border-radius: 5px;
             background-color: #17baef;
         }
-        input[type="file"] {
-            border: 1px solid cornflowerblue;
-            border-radius: 5px;
-            background-color: #17baef;
-        }
     </style>
 </head>
-
 <body>
-<div id="header">
-    <H3><@header></@header></H3>
-</div>
-
-
-<div class="content1">
-    <div class="content"><@content></@content></div>
-</div>
-
+<a href="/">Главная страница</a>
+<br>
+<form action="/registration">
+    <button>Зарегистрироваться</button>
+</form>
+<br>
+<form method="post" th:action="@{signIn}" th:object="${user}">
+    <a>Логин:</a>
+    <input name="login" type="text" th:field="*{login}"/>
+    <br>
+    <a>Пароль:</a>
+    <input name="password" type="password" th:field="*{password}">
+    <br>
+    <input type="submit" value="Войти">
+</form>
 </body>
-
 </html>

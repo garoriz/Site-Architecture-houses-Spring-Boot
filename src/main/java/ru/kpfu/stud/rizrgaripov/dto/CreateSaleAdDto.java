@@ -14,7 +14,7 @@ public class CreateSaleAdDto {
     @NotBlank(message = "Номер телефона не должен быть пустым!")
     private String phoneNumber;
     private String urlPhoto;
-    private User user;
+    private int userId;
 
     public CreateSaleAdDto() {
     }
@@ -59,20 +59,20 @@ public class CreateSaleAdDto {
         this.urlPhoto = urlPhoto;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public CreateSaleAdDto(String heading, String content, int price, String phoneNumber, String urlPhoto, User user) {
+    public CreateSaleAdDto(String heading, String content, int price, String phoneNumber, String urlPhoto, int userId) {
         this.heading = heading;
         this.content = content;
         this.price = price;
         this.phoneNumber = phoneNumber;
         this.urlPhoto = urlPhoto;
-        this.user = user;
+        this.userId = userId;
     }
 }

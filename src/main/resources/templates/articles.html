@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Статьи</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3>Статьи</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <td>
+            <span th:if="${articles.size == 0}">
+                Статей нет
+            </span>
+            <span th:unless="${articles.size == 0}">
+                <tr th:each="article: ${articles}">
+                    <a th:text="${article.heading}" th:href="@{/article(id=${article.id})}">heading</a>
+                    <br>
+                </tr>
+            </span>
+        </td>
+    </div>
+</div>
+</body>
+</html>

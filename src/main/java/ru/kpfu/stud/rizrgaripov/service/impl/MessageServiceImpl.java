@@ -2,10 +2,8 @@ package ru.kpfu.stud.rizrgaripov.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.kpfu.stud.rizrgaripov.dto.ArticleDto;
 import ru.kpfu.stud.rizrgaripov.dto.CreateMessageDto;
 import ru.kpfu.stud.rizrgaripov.dto.MessageDto;
-import ru.kpfu.stud.rizrgaripov.model.Article;
 import ru.kpfu.stud.rizrgaripov.model.Message;
 import ru.kpfu.stud.rizrgaripov.model.User;
 import ru.kpfu.stud.rizrgaripov.repository.MessageRepository;
@@ -24,9 +22,9 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<MessageDto> getAll(User user, User recipient) {
+    public List<MessageDto> getAll(int userId, int recipientId) {
         return messageRepository
-                .findAllByUserAndRecipient(user, recipient)
+                .findAllByUserIdAndRecipientId(userId, recipientId)
                 .stream()
                 .map(MessageDto::fromModel)
                 .collect(Collectors.toList());
@@ -35,9 +33,9 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void save(CreateMessageDto createMessageDto) {
         Message message = new Message(
-                createMessageDto.getContent(),
-                createMessageDto.getUser(),
-                createMessageDto.getRecipient()
+                createMessageDto.getUserId(),
+                createMessageDto.getRecipientId(),
+                createMessageDto.getContent()
         );
         messageRepository.save(message);
     }

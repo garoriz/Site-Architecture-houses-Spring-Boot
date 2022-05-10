@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Объявления</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3>Объявления</H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <form th:action="@{/saleAds}" method="post">
+            Поиск:
+            <input name="searchName" type="text" id="search">
+            <br>
+            Фильтр
+            <br>
+            Максимальная цена:
+            <input name="maxPrice" type="number">
+            <input type="submit" value="Найти">
+        </form>
+        <td>
+            <span th:if="${saleAds.size == 0}">
+                Объявлений  нет
+            </span>
+            <span th:unless="${saleAds.size == 0}">
+                <tr th:each="saleAd: ${saleAds}">
+                    <a th:text="${saleAd.heading}" th:href="@{/saleAd(id=${saleAd.id})}">heading</a>
+                    <br>
+                </tr>
+            </span>
+        </td>
+    </div>
+</div>
+</body>
+</html>

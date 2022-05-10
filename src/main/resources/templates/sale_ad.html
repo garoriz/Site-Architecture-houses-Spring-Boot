@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Объявление о продаже</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <H3><td th:text="${saleAd.heading}">heading</td></H3>
+</div>
+
+<div class="content1">
+    <div class="content">
+        <a href="/">Главная страница</a>
+        <br>
+        <a href="/saleAds">Назад</a>
+        <br>
+        <a th:text="${user.name}" th:href="@{/profile(login=${user.login})}">user</a>
+        <br>
+        <td th:text="${saleAd.content}">content</td>
+        <br>
+        <p th:utext="${saleAd.urlPhoto}"></p>
+        <p style="font-weight:bold; color: red"><small>Цена: <td th:text="${saleAd.price}">content</td> руб.</small></p>
+        <p style="font-weight:bold"><small><td th:text="${saleAd.phoneNumber}">content</td></small></p>
+    </div>
+</div>
+</body>
+</html>
