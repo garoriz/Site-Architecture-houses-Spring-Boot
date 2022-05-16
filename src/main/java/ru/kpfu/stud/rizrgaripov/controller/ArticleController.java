@@ -8,8 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.kpfu.stud.rizrgaripov.dto.*;
-import ru.kpfu.stud.rizrgaripov.model.Article;
+import ru.kpfu.stud.rizrgaripov.dto.ArticleDto;
+import ru.kpfu.stud.rizrgaripov.dto.CreateArticleDto;
+import ru.kpfu.stud.rizrgaripov.dto.UserDto;
 import ru.kpfu.stud.rizrgaripov.service.ArticleService;
 import ru.kpfu.stud.rizrgaripov.service.UserService;
 

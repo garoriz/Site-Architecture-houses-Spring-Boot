@@ -55,6 +55,20 @@
             color: #0e98c5;
         }
     </style>
+    <script>
+        function validate() {
+            let a = document.forms["articleForm"]["heading"].value;
+            if (a === "") {
+                alert("Укажите заголовок статьи");
+                return false;
+            }
+            let b = document.forms["articleForm"]["content"].value;
+            if (b === "") {
+                alert("статья не может быть пустой");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <script type="text/javascript">
@@ -66,14 +80,14 @@
 </script>
 <a href="/">Главная страница</a>
 <br>
-<form method="post" th:action="@{addArticle}" th:object="${article}">
+<form name="articleForm" method="post" th:action="@{addArticle}" th:object="${article}" onsubmit="return validate()">
     Заголовок:
     <p><textarea rows="2" cols="160" name="heading" th:field="*{heading}"></textarea></p>
     <br>
     Текст:
-    <p><textarea id="count_char_textarea" rows="50" cols="160" name="content"onchange="countChar()"
+    <p><textarea id="count_char_textarea" rows="50" cols="160" name="content" onchange="countChar()"
                  onkeyup="countChar()" th:field="*{content}"></textarea></p>
-    <br>ус
+    <br>
     Количество символов в тексте статьи:
     <input type="text" id="count_char" value="0" readonly="readonly" />
     <br>

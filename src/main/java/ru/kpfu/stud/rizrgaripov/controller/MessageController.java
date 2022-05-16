@@ -11,10 +11,6 @@ import ru.kpfu.stud.rizrgaripov.dto.MessageDto;
 import ru.kpfu.stud.rizrgaripov.dto.UserDto;
 import ru.kpfu.stud.rizrgaripov.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 @Controller
 public class MessageController {
 

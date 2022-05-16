@@ -20,9 +20,10 @@
             <br>
             Сменить статус: <input name="status" type="text" th:field="*{status}"/>
             <br>
-            Сменить пароль: <input name="password" type="password" th:field="*{password}"/>
+            Сменить пароль: <input name="password" type="password" th:field="*{password}" minlength="8"/>
             <br>
-            Подтвердить пароль: <input name="confirmedPassword" type="password" th:field="*{confirmedPassword}"/>
+            Подтвердить пароль: <input name="confirmedPassword" type="password" th:field="*{confirmedPassword}"
+                                       minlength="8"/>
             <br>
             <input type="submit" value="Сохранить">
             <br>

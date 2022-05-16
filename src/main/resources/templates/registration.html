@@ -82,11 +82,31 @@
             background-color: #17baef;
         }
     </style>
+    <script>
+        function validate() {
+            let a = document.forms["registrationForm"]["login"].value;
+            if (a === "") {
+                alert("Логин не может быть пустым");
+                return false;
+            }
+            let b = document.forms["registrationForm"]["name"].value;
+            if (b === "") {
+                alert("Имя не может быть пустым");
+                return false;
+            }
+            let c = document.forms["registrationForm"]["surname"].value;
+            if (c === "") {
+                alert("Фамилия не может быть пустой");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <a href="/">Главная страница</a>
 <br>
-<form method="post" th:action="@{registration}" th:object="${user}">
+<form name="registrationForm" method="post" th:action="@{registration}" th:object="${user}"
+      onsubmit="return validate()">
     Логин:
     <input name="login" type="text" th:field="*{login}"/>
     <br>
@@ -97,10 +117,10 @@
     <input name="surname" type="text" th:field="*{surname}"/>
     <br>
     Пароль:
-    <input name="password" type="password" th:field="*{password}">
+    <input name="password" type="password" th:field="*{password}"  minlength="8">
     <br>
     Подтверждение пароля:
-    <input name="confirmedPassword" type="password" th:field="*{confirmedPassword}">
+    <input name="confirmedPassword" type="password" th:field="*{confirmedPassword}" minlength="8">
     <br>
     <input type="submit" value="Регистрация">
     <br>

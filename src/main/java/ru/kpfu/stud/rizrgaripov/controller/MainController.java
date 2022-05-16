@@ -7,17 +7,17 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.kpfu.stud.rizrgaripov.config.SecurityConfig;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import ru.kpfu.stud.rizrgaripov.dto.*;
 import ru.kpfu.stud.rizrgaripov.model.Color;
+import ru.kpfu.stud.rizrgaripov.service.ReviewService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -28,6 +28,13 @@ public class MainController {
             = LoggerFactory.getLogger(MainController.class);
 
     Gson gson = new Gson();
+
+    private final ReviewService reviewService;
+
+    @Autowired
+    public MainController(ReviewService reviewService) {
+        this.reviewService = reviewService;
+    }
 
     @GetMapping("/")
     public String getMainPage() {
@@ -100,5 +107,17 @@ public class MainController {
             logger.error(e.getMessage());
         }
         return "random_shade";
+    }
+
+    @GetMapping("/submitReview")
+    public String getReviewForm(Model model) {
+        model.addAttribute("review", new CreateReviewDto());
+        return "review_form";
+    }
+
+    @PostMapping("/submitReview")
+    public String postReview(@ModelAttribute(name = "review") CreateReviewDto reviewDto) {
+        reviewService.save(reviewDto);
+        return "review_added";
     }
 }

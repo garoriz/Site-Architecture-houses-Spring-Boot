@@ -6,17 +6,15 @@ import com.cloudinary.utils.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.kpfu.stud.rizrgaripov.dto.*;
+import ru.kpfu.stud.rizrgaripov.model.User;
 import ru.kpfu.stud.rizrgaripov.service.UserService;
 
 import javax.servlet.ServletException;
@@ -25,6 +23,7 @@ import javax.servlet.http.*;
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.Set;
 
 @Controller
 @MultipartConfig(
@@ -54,7 +53,7 @@ public class UserController {
         String login = userDto.getLogin();
         String password = userDto.getPassword();
         String confirmedPassword = userDto.getConfirmedPassword();
-        if ((userService.get(login)) != null || login.length() < 8 || name.trim().equals("")) {
+        if ((userService.get(login)) != null || name.trim().equals("")) {
             return "registration";
         } else if (password.length() > 7 && password.equals(confirmedPassword)) {
             String url = request.getRequestURL().toString().replace(request.getServletPath(), "");

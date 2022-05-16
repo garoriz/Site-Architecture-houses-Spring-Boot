@@ -5,6 +5,30 @@
     <title>Новое объявление</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script>
+        function validate() {
+            let a = document.forms["saleAdForm"]["heading"].value;
+            if (a === "") {
+                alert("Укажите заголовок объявления");
+                return false;
+            }
+            let b = document.forms["saleAdForm"]["content"].value;
+            if (b === "") {
+                alert("Объявление не может быть пустым");
+                return false;
+            }
+            let c = document.forms["saleAdForm"]["price"].value;
+            if (c === "") {
+                alert("Укажите цену");
+                return false;
+            }
+            let d = document.forms["saleAdForm"]["phoneNumber"].value;
+            if (d === "") {
+                alert("Укажите номер телефона");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <div id="header">
@@ -15,7 +39,8 @@
     <div class="content">
         <a href="/">Главная страница</a>
         <br>
-        <form method="post" enctype="multipart/form-data" th:action="@{addSaleAd}" th:object="${saleAd}">
+        <form name="saleAdForm" method="post" enctype="multipart/form-data" th:action="@{addSaleAd}"
+              th:object="${saleAd}" onsubmit="return validate()">
             Заголовок:
             <p><textarea rows="2" cols="160" name="heading" th:field="*{heading}"></textarea></p>
             <br>

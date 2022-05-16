@@ -9,6 +9,9 @@ import ru.kpfu.stud.rizrgaripov.model.User;
 import ru.kpfu.stud.rizrgaripov.repository.UserRepository;
 import ru.kpfu.stud.rizrgaripov.service.UserService;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -37,7 +40,8 @@ public class UserServiceImpl implements UserService {
                 " ",
                 urlPhoto,
                 createUserDto.getLogin(),
-                encodedPassword);
+                encodedPassword
+        );
         userRepository.save(user);
         return UserDto.fromModel(user);
     }
