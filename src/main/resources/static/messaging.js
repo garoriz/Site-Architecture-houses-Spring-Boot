@@ -2,7 +2,7 @@ let stompClient = null;
 
 function init() {
     console.log('Trying to connect');
-    let socket = new SockJS("/message-websocket");
+    let socket = new SockJS("message-websocket");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
             setConnected();

@@ -100,7 +100,7 @@ public class MainController {
         Response response = null;
         try {
             response = call.execute();
-            Color color = gson.fromJson(Objects.requireNonNull(response.body()).string() + "gfewgg{", Color.class);
+            Color color = gson.fromJson(Objects.requireNonNull(response.body()).string(), Color.class);
             color.setBackgroundColor("background-color:" + color.getHex() + ";");
             model.addAttribute("color", color);
         } catch (IOException e) {

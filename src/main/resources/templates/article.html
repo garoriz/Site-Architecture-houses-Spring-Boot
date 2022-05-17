@@ -15,8 +15,6 @@
   <div class="content">
     <a href="/">Главная страница</a>
     <br>
-    <a href="/articles">Назад</a>
-    <br>
     <a th:text="${user.name}" th:href="@{/profile(login=${user.login})}">user</a>
     <br>
     <td th:text="${article.content}">content</td>

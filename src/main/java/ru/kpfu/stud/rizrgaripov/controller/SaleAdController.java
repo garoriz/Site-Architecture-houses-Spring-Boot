@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.kpfu.stud.rizrgaripov.dto.*;
 import ru.kpfu.stud.rizrgaripov.service.SaleAdService;
 import ru.kpfu.stud.rizrgaripov.service.UserService;
@@ -178,8 +179,14 @@ public class SaleAdController {
         return "update_sale_ad";
     }
 
-    @PostMapping("/updateSaleAd")
-    public String updateSaleAd(@ModelAttribute(name = "saleAd") ChangeSaleAdDto changeSaleAdDto, HttpServletRequest request) {
+    @PostMapping(value = "/updateSaleAd", params = "action=submit")
+    public String updateSaleAd(
+            HttpServletRequest request,
+            @RequestParam("heading") String heading,
+            @RequestParam("content") String content,
+            @RequestParam("price") int price,
+            @RequestParam("phoneNumber") String phoneNumber
+            ) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = null;
         if (principal instanceof UserDetails) {
@@ -233,14 +240,13 @@ public class SaleAdController {
                     .height(500)).imageTag(publicId);
         }
         int id = Integer.parseInt(request.getParameter("id"));
-        changeSaleAdDto.setUrlPhoto(urlPhoto);
         saleAdService.update(
                 id,
-                changeSaleAdDto.getHeading(),
-                changeSaleAdDto.getContent(),
-                changeSaleAdDto.getPrice(),
-                changeSaleAdDto.getPhoneNumber(),
-                changeSaleAdDto.getUrlPhoto()
+                heading,
+                content,
+                price,
+                phoneNumber,
+                urlPhoto
         );
         return "sale_ad_updated";
     }

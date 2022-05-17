@@ -39,27 +39,27 @@
     <div class="content">
         <a href="/">Главная страница</a>
         <br>
-        <form name="saleAdForm" method="post" enctype="multipart/form-data" th:action="@{updateSaleAd(id=${saleAd.id})}"
-              th:object="${changeSaleAd}" onsubmit="return validate()">
-            Заголовок:
-            <p><textarea rows="2" cols="160" name="heading" th:field="*{heading}" th:text="${saleAd.heading}">
-
+        Заголовок:
+        <p><textarea rows="2" cols="160" form="updateSaleAd" name="heading" th:text="${saleAd.heading}">
+            text
             </textarea></p>
-            <br>
-            Текст:
-            <p><textarea rows="50" cols="160" name="content" th:field="*{content}" th:text="${saleAd.content}">
-
+        <br>
+        Текст:
+        <p><textarea rows="50" cols="160" form="updateSaleAd" name="content" th:text="${saleAd.content}">
+            content
             </textarea></p>
-            <br>
-            Цена:
-            <input name="price" type="number" th:field="*{price}" th:value="${saleAd.price}">
-            <br>
-            Номер телефона:
-            <input name="phoneNumber" type="text" th:field="*{phoneNumber}" th:value="${saleAd.phoneNumber}">
-            <br>
+        <br>
+        Цена:
+        <input name="price" type="number" form="updateSaleAd" th:value="${saleAd.price}">
+        <br>
+        Номер телефона:
+        <input name="phoneNumber" type="text" form="updateSaleAd" th:value="${saleAd.phoneNumber}">
+        <br>
+        <form id="updateSaleAd" name="saleAdForm" method="post" enctype="multipart/form-data"
+              th:action="@{updateSaleAd(id=${saleAd.id})}" onsubmit="return validate()">
             <input type="file" name="file">
             <br>
-            <input type="submit" value="Изменить объявление">
+            <button type="submit" name="action" value="submit">Изменить объявление</button>
         </form>
     </div>
 </div>

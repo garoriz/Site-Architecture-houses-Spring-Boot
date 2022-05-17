@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Review {
+public class  Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
